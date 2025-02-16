@@ -1,0 +1,51 @@
+int[,] data = { { 1, 1, 0, 1, 0 },
+                { 1, 1, 1, 0, 0 },
+                { 0, 0, 0, 1, 1 }, 
+                { 1, 0, 0, 0, 0 }, 
+                { 1, 1, 0, 1, 0 }};
+
+int[,] data2 = { { 1, 1, 0, 0 }, 
+                 { 1, 1, 0, 0 }, 
+                 { 0, 0, 1, 1 }, 
+                 { 0, 0, 1, 1 }};
+
+
+static void DFS(int[,] matriz, int i, int j, int filas, int columnas)
+{
+    if(i < 0 || i >= filas || j < 0 || j >= columnas || matriz[i,j] != 1)
+    {
+        return;
+    }
+
+    matriz[i, j] = -1;
+
+    DFS(matriz, i + 1, j, filas, columnas);
+    DFS(matriz, i - 1, j, filas, columnas);
+    DFS(matriz, i, j + 1, filas, columnas);
+    DFS(matriz, i, j - 1, filas, columnas);
+
+}
+
+static int redes(int[,] matriz) 
+{
+    int filas = matriz.GetLength(0);
+    int columnas = matriz.GetLength(1);
+    int contador = 0;
+
+    for (int i = 0; i < filas; i++)
+    {
+        for (int j = 0; j < columnas; j++)
+        {
+            if (matriz[i,j] == 1)
+            {
+                contador++;
+                DFS(matriz, i, j, filas, columnas);
+            }
+        }
+    }
+
+    return contador;
+
+}
+
+Console.WriteLine(redes(data)); 
