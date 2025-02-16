@@ -1,0 +1,28 @@
+// numero factorial
+static void factorial(int n) {
+
+    if (n < 1)
+    {
+        Console.Write("El numero " + n + " es negativo, no se puede calcular el factorial");
+    }
+    else if (n == 1)
+    {
+        Console.Write("El factorial de " + n + " es 1");
+    }
+    else {
+
+        int resultado = 1;
+        int anterior = 1;
+        for (int i = 1; i < n+1; i++)
+        {
+            resultado = i;
+            resultado = anterior * resultado;
+            anterior = resultado;
+        }
+
+        Console.WriteLine("El factorial de " + n + " es " + resultado);
+    }
+
+}
+
+factorial(5);
