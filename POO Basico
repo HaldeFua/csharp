@@ -1,0 +1,119 @@
+// programa: 
+using SuperHeroesApp.Models;
+
+var poderVolar = new SuperPoder();
+poderVolar.Nombre = "Volar";
+poderVolar.Descipcion = "Capacidad para volar y planear en el aire";
+poderVolar.Nivel = NivelPoder.NivelDos;
+
+var poderFuerza = new SuperPoder();
+poderFuerza.Nombre = "Super Fuerza";
+poderFuerza.Descipcion = "Fuerza sobre humana";
+poderFuerza.Nivel = NivelPoder.NivelTres;
+
+var superman = new SuperHeroe();
+
+superman.Id = 1;
+superman.Nombre = "Superman";
+superman.IdentidadSecreta = "Clark Kent";
+superman.Ciudad = "Metropolis";
+superman.PuedeVolar = true;
+List<SuperPoder> poderesSuperman = new List<SuperPoder>();
+poderesSuperman.Add(poderVolar);
+poderesSuperman.Add(poderFuerza);
+
+superman.SuperPoderes = poderesSuperman;
+
+Console.WriteLine(superman.UsarSuperPoderes());
+
+enum NivelPoder
+{ 
+    NivelUno, NivelDos, NivelTres
+}
+
+//superheroe
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SuperHeroesApp.Models
+{
+     class SuperHeroe
+        {
+            private string _Nombre;
+
+            public int Id;
+            public string Nombre 
+            {
+                get
+                    { 
+                        return _Nombre;
+                    }
+                set
+                { 
+                    _Nombre = value.Trim();
+                }
+             }
+
+        public string NombreDeIdentidadSecreta 
+        {
+            get {
+                return $"{Nombre} ({IdentidadSecreta})";
+            }        
+        }
+
+
+            public string IdentidadSecreta;
+            public string Ciudad;
+            public List<SuperPoder> SuperPoderes;
+            public bool PuedeVolar;
+
+            public SuperHeroe()
+            {
+                Id = 1;
+                SuperPoderes = new List<SuperPoder>();
+                PuedeVolar = false;
+            }
+
+            public string UsarSuperPoderes()
+            {
+
+                StringBuilder sb = new StringBuilder();
+                foreach (var item in SuperPoderes)
+                {
+
+                    sb.AppendLine($"{NombreDeIdentidadSecreta} está usando el superpoder {item.Nombre}!!");
+                }
+
+                return sb.ToString();
+
+            }
+
+    }
+}
+
+//Superpoder
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SuperHeroesApp.Models
+{
+    internal class SuperPoder
+    {
+
+        public string Nombre;
+        public string Descipcion;
+        public NivelPoder Nivel;
+
+        public SuperPoder()
+        {
+            Nivel = NivelPoder.NivelUno;
+        }
+
+    }
+}
