@@ -1,28 +1,42 @@
-// numero factorial
-static void factorial(int n) {
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    if (n < 1)
+namespace ConsoleAppDeliverables
+{
+    public class Factorial
     {
-        Console.Write("El numero " + n + " es negativo, no se puede calcular el factorial");
-    }
-    else if (n == 1)
-    {
-        Console.Write("El factorial de " + n + " es 1");
-    }
-    else {
 
-        int resultado = 1;
-        int anterior = 1;
-        for (int i = 1; i < n+1; i++)
+        public static void factorial(int n)
         {
-            resultado = i;
-            resultado = anterior * resultado;
-            anterior = resultado;
+            if (n < 1)
+            {
+                Console.Write("El numero " + n + " es negativo, no se puede calcular el factorial");
+            }
+            else if (n == 1)
+            {
+                Console.Write("El factorial de " + n + " es 1");
+            }
+            else
+            {
+                int result = 1;
+                int previous = 1;
+                for (int i = 1; i < n + 1; i++)
+                {
+                    result = i;
+                    result = previous * result;
+                    previous = result;
+                }
+
+                Console.WriteLine("El factorial de " + n + " es " + result);
+            }
         }
 
-        Console.WriteLine("El factorial de " + n + " es " + resultado);
+        public static void Main()
+        {
+            //factorial(5);
+        }
     }
-
 }
-
-factorial(5);
