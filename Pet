@@ -1,0 +1,24 @@
+    public class Pet
+    {
+
+        private string _name;
+        private int _age;
+        private string _type;
+
+        public Pet(string name, int age, string type)
+        {
+            _name = name;
+            _age = age;
+            _type = type;
+        }
+
+        public string IntroduceYourself() { 
+            return $"Hola!. Mi nombre es {_name} y tengo {_age} años";
+        }
+
+        public string CelebrateBirthday() { 
+        
+            return $"Hoy estoy cumpliendo {_age} años";
+        }
+
+    }
